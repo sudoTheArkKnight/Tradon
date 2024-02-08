@@ -27,11 +27,11 @@ To use the Stock Sentiment Analysis and Market Prediction system, follow these s
 
 ## Contributors
 
-- Abhishek Kumar
-- Ayush Khatri
-- Tezidipta kakaty
-- Gunjan
-- Arya Pratap Singh
+- [Abhishek Kumar](https://github.com/The-Ark-Knight)
+- [Ayush Khatri](https://github.com/ayush362)
+- [Tezidipta kakaty](https://github.com/tezodipta)
+- [Gunjan](https://github.com/denieolmax)
+- [Arya Pratap Singh](https://github.com/AryaPratapSingh)
 
 ## License
 
