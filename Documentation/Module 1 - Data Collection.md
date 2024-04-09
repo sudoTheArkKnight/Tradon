@@ -1,3 +1,4 @@
 #### Subsection 1 : Web Scrappers 
 
-- Using S
+Using the Scrapy Python library.
+
