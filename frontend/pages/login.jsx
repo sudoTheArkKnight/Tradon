@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from "react";
-import {backendAddress} from "@/server-config";
-import {useRouter} from "next/router";
+import React, { useEffect, useState } from "react";
+import { backendAddress } from "@/server-config";
+import { useRouter } from "next/router";
 // import {cookies} from "next/headers";
 
 const Login = () => {
-
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errMessage, setErrMessage] = useState("");
@@ -20,21 +19,25 @@ const Login = () => {
     // }, []);
 
     function handleLogin(e) {
-        e.preventDefault()
+        e.preventDefault();
         fetch(`${backendAddress}/login`, {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({username, password})
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
         })
-            .then(response => response.json())
-            .then(data => {
-                if(data.status === "success"){
+            .then((response) => response.json())
+            .then((data) => {
+                // Inside handleLogin function after successful login
+                if (data.status === "success") {
                     setErrMessage("");
-                    router.push("/welcome")
+                    router.push({
+                        pathname: "/welcome",
+                        query: { username }, // Pass username as a query parameter
+                    });
                 } else {
-                    setErrMessage("Login failed. Please try again")
+                    setErrMessage("Login failed. Please try again");
                 }
-            })
+            });
     }
 
     return (
@@ -63,11 +66,17 @@ const Login = () => {
                         name="password"
                     />
                     {errMessage && <p className="text-red-500">{errMessage}</p>}
-                    <button type="submit" className="px-5 py-3 mt-5 bg-blue-500 text-white rounded-md">
+                    <button
+                        type="submit"
+                        className="px-5 py-3 mt-5 bg-blue-500 text-white rounded-md"
+                    >
                         login
                     </button>
                     <p className="text-gray-400">
-                        Not registered? <a href="#" className="text-white">Sign up</a>
+                        Not registered?{" "}
+                        <a href="#" className="text-white">
+                            Sign up
+                        </a>
                     </p>
                 </form>
             </div>
