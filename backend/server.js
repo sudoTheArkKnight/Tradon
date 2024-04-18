@@ -2,32 +2,38 @@ const path = require("path");
 
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
 const helmet = require("helmet");
 app.use(helmet());
+app.use(cors());
+app.use(express.json());
 
-app.set("view engine", "ejs");
+const listSessions = [];
 
 app.get("/", (req, res) => {
-    res.render(path.join(__dirname, "../frontend/pages/welcome.jsx"));
+    res.json({"text": "Hello World"});
 });
 
-app.get("/login", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend/pages/login.jsx"));
+app.get("/name", (req, res) => {
+    res.json({"text": "Hello World"});
 });
 
-app.post("/login_check", (req, res) => {
-    const password = req.body.password;
-    const username = req.body.username;
+app.post("/login", (req, res) => {
+    const {username, password} = req.body;
     if (password === "xoxo") {
-        res.redirect("../frontend/sections/hero.jsx");
+        listSessions.push(username);
+        res.cookie("session", "1234")
+        res.json({"status": "success"});
     } else {
-        res.redirect("../frontend/pages/login.jsx");
+        res.json({"status": "failure"});
     }
 });
 
+app.post("/login_check", (req, res) => {
+});
+
 app.get("/logout", (req, res) => {
-    res.redirect("../frontend/pages/login.jsx");
 });
 
 app.listen(4000, () => {
