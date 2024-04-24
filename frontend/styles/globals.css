@@ -18,9 +18,17 @@
 .main-bg {
     background-image: linear-gradient(
         to top right,
-        rgb(7, 140, 103) ,
+        rgb(7, 140, 103),
         rgb(49, 49, 79),
         rgb(23, 75, 75),
-        rgb(7, 140, 103) 
+        rgb(7, 140, 103)
     );
+}
+
+.bgImg {
+    background: url("/bg-image.svg");
+}
+
+.blue-bg {
+    background-color: #1b293f;
 }
