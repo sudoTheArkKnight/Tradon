@@ -1,0 +1,13 @@
+{
+    "site_name": "MoneyControl",
+    "article_title": "Global equity flow slows, Indian flows continue but momentum hits lowest level since May '23",
+    "article_desc": "Foreign investors have been net buyers in Indian equities for 14 consecutive months, but the momentum has slowed down significantly.",
+    "left_block_content": "Some left block content here",
+    "p_tags": [
+        "Paragraph 1 content",
+        "Paragraph 2 content",
+        "Paragraph 3 content",
+        "Paragraph 4 content",
+        "Paragraph 5 content"
+    ]
+}
