@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>jQuery Image Events</title>
+  <style>
+    .imageSwitch {
+      max-width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+
+    .mouseenter {
+      border: 10px solid red;
+    }
+
+    .mouseleave {
+      border: 20px solid green;
+    }
+
+    .focus {
+      border: 30px solid blue;
+    }
+
+    .blur {
+      border: 40px solid black;
+    }
+
+    .mousedown {
+      border: 50px solid yellow;
+    }
+
+    .mouseup {
+      border: 5px solid purple;
+    }
+
+    .dblclick {
+      border: 5px solid orange;
+    }
+  </style>
+</head>
+
+<body>
+
+<img src="a.png" alt="MENU" class="imageSwitch">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+
+    var img = $('.imageSwitch');
+
+    img.on('mouseenter', function() {
+      $(this).addClass('mouseenter');
+    });
+
+    img.on('mouseleave', function() {
+      $(this).removeClass('mouseenter');
+      $(this).addClass('mouseleave');
+    });
+
+    img.on('focus', function() {
+      $(this).addClass('focus');
+    });
+
+    img.on('blur', function() {
+      $(this).removeClass('focus');
+      $(this).addClass('blur');
+    });
+
+    img.on('mousedown', function() {
+      $(this).addClass('mousedown');
+    });
+
+    img.on('mouseup', function() {
+      $(this).removeClass('mousedown');
+      $(this).addClass('mouseup');
+    });
+
+    img.on('dblclick', function() {
+      $(this).addClass('dblclick');
+    });
+
+  });
+</script>
+</body>
+
+</html>
