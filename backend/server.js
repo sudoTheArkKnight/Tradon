@@ -1,41 +1,32 @@
-const path = require("path");
+// completed till Register User Endpoint
 
-const express = require("express");
+import express from "express";
+import dotenv from "dotenv";
+dotenv.config();
+import cookieParser from "cookie-parser";
+import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+import connectDB from "./config/db.js";
+const port = process.env.PORT || 5000;
+import userRoutes from "./routes/userRoutes.js";
+
+connectDB();
+
 const app = express();
-const cors = require("cors");
 
-const helmet = require("helmet");
-app.use(helmet());
-app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-const listSessions = [];
+app.use(cookieParser());
+
+app.use("/api/users", userRoutes);
 
 app.get("/", (req, res) => {
-    res.json({"text": "Hello World"});
+    res.send("Server is ready");
 });
 
-app.get("/name", (req, res) => {
-    res.json({"text": "Hello World"});
-});
+app.use(notFound);
+app.use(errorHandler);
 
-app.post("/login", (req, res) => {
-    const {username, password} = req.body;
-    if (password === "xoxo") {
-        listSessions.push(username);
-        res.cookie("session", "1234")
-        res.json({"status": "success"});
-    } else {
-        res.json({"status": "failure"});
-    }
-});
-
-app.post("/login_check", (req, res) => {
-});
-
-app.get("/logout", (req, res) => {
-});
-
-app.listen(4000, () => {
-    console.log("Server is running on port 4000");
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
 });
