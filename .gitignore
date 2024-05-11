@@ -2,3 +2,5 @@ bin/
 .obsidian/
 *.canvas
 .env/
+node_modules
+node_modules

@@ -1,0 +1,39 @@
+{
+    "name": "mern-authentication",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node backend/server.js",
+        "server": "nodemon backend/server.js",
+        "client": "npm run dev --prefix frontend",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "@mui/x-charts": "^7.3.2",
+        "autoprefixer": "^10.4.19",
+        "bcryptjs": "^2.4.3",
+        "chart.js": "^4.4.2",
+        "cookie-parser": "^1.4.6",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "express-async-handler": "^1.2.0",
+        "jsonwebtoken": "^9.0.2",
+        "mongodb": "^6.5.0",
+        "mongoose": "^8.3.2",
+        "plotly.js": "^2.32.0",
+        "postcss": "^8.4.38",
+        "react-chartjs-2": "^5.2.0",
+        "react-plotly.js": "^2.6.0",
+        "react-toastify": "^10.0.5",
+        "tailwindcss": "^3.4.3"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2",
+        "nodemon": "^3.1.0"
+    }
+}

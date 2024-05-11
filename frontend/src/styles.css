@@ -1,0 +1,99 @@
+/* src/styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bgImg {
+    background: url("/bg-image.svg");
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+.bgSecondary {
+    background-color: #1d2a4e;
+}
+
+.welcome-div {
+    border-radius: 10px;
+    padding: 80px 110px 80px 110px;
+    background-color: #1d2a4e;
+}
+
+/* Login styles */
+
+.loginSection {
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.ld1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ld2 {
+    margin-top: 140px;
+    width: 600px;
+    padding: 70px 100px;
+    /* border-radius: 30px; */
+
+    /* justify-self: center; */
+}
+
+.ld2 h1 {
+    margin-bottom: 50px;
+}
+.button {
+    width: 100%;
+}
+
+.shareSection {
+    /* height: 100%; */
+    color: #fff;
+    /* background-color: black; */
+    padding-top: 35px;
+    padding-left: 30px;
+    cursor: pointer;
+    padding-right: 30px;
+}
+.shareHeading{
+  font-size: 55px;
+  margin-left: 20px;
+}
+.shareDiv {
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.sharecard {
+    background-color: #202545;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sharecardImage {
+    width: 150px;
+}
+
+.newsCard{
+  display: flex;
+}
+
+.ncard{
+  display: flex;
+  margin-right: 50px;
+  padding: 50px;
+  background-color: #202545;
+  border-radius: 25px;
+
+}
