@@ -11,8 +11,12 @@ html,
 body,
 #root {
     height: 100%;
+    text-decoration: none;
 }
-
+a {
+    color: white;
+    text-decoration: none;
+}
 .bgSecondary {
     background-color: #1d2a4e;
 }
@@ -62,38 +66,114 @@ body,
     cursor: pointer;
     padding-right: 30px;
 }
-.shareHeading{
-  font-size: 55px;
-  margin-left: 20px;
+.shareHeading {
+    font-size: 55px;
+    margin-left: 20px;
 }
 .shareDiv {
     margin-bottom: 50px;
     display: flex;
     flex-direction: column;
+    color: white;
 }
 .sharecard {
+    color: white;
+    text-decoration: none;
     background-color: #202545;
     border-radius: 30px;
-    margin-bottom: 20px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    margin-top: 20px;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
+.sharecard a {
+    text-decoration: none;
+}
 .sharecardImage {
     width: 150px;
 }
 
-.newsCard{
-  display: flex;
+.newsCard {
+    display: flex;
 }
 
-.ncard{
-  display: flex;
-  margin-right: 50px;
-  padding: 50px;
-  background-color: #202545;
-  border-radius: 25px;
+.ncard {
+    display: flex;
+    margin-right: 50px;
+    padding: 50px;
+    background-color: #202545;
+    border-radius: 25px;
+}
 
+.shareContainer {
+    height: 60vh; /* Adjust the height as per your requirement */
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.shareDiv {
+    flex: 1;
+}
+
+.selectedShareDescription {
+    color: white;
+}
+
+.shareDetailsSection {
+    color: white;
+}
+.imagelogo {
+    height: 40px;
+}
+
+.shareDetailsDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.sdd2 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #1d2a4e;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-radius: 40px;
+}
+
+.sdmaindiv {
+    display: flex;
+}
+.sdsubdiv {
+    width: 70%;
+}
+.sdnews {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 303px; */
+    /* background-color: #1d2a4e; */
+    flex-wrap: wrap;
+    width: 30%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.down{
+    width: 60px;
+    height: 40px;
+}
+.sdnews h2{
+    margin-bottom: 40px;
+}
+
+.sdnewsCard{
+    margin-bottom: 30px;
 }
