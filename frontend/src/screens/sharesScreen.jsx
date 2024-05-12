@@ -22,26 +22,28 @@ const SharesScreen = () => {
     return (
         <section className="shareSection bgImg">
             <h2 className="shareHeading">Welcome</h2>
-            <div className="shareDiv">
-                <a href={`/share/${selectedShare.id}`}>
-                    {/* <Link
+            <div className="shareContainer">
+                <div className="shareDiv">
+                    <a href={`/share/${selectedShare.id}`}>
+                        {/* <Link
                     to={{
                         pathname: `share/1`,
                         state: selectedShare,
                     }}
                 > */}
-                    {sharedata.map((stockInfo, index) => (
-                        <div
-                            onClick={() =>
-                                setSelectedShareName(stockInfo.shareName)
-                            }
-                            key={index}
-                        >
-                            <ShareCard {...stockInfo} />
-                        </div>
-                    ))}
-                    {/* </Link> */}
-                </a>
+                        {sharedata.map((stockInfo, index) => (
+                            <div
+                                onClick={() =>
+                                    setSelectedShareName(stockInfo.shareName)
+                                }
+                                key={index}
+                            >
+                                <ShareCard {...stockInfo} />
+                            </div>
+                        ))}
+                        {/* </Link> */}
+                    </a>
+                </div>
             </div>
             <h1>News</h1>
             <div className="newsCard">
@@ -74,12 +76,12 @@ const ShareCard = ({ image, shareName, high, low, week, data, id }) => {
             <img src={image} alt={shareName} className="sharecardImage" />
             <h3>{shareName}</h3>
             <LineChart width={400} height={150} data={data}>
-                <CartesianGrid strokeDasharray="5 5" />
+                {/* <CartesianGrid strokeDasharray="5 5" /> */}
                 <XAxis dataKey="date" />
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="price" stroke="#008000" />
+                <Line type="monotone" dataKey="price" stroke="#fff" />
             </LineChart>
             <h3>{high}</h3>
             <h3>{low}</h3>
