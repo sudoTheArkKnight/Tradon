@@ -2,19 +2,19 @@ import pymongo
 import json
 
 # MongoDB connection URI
-mongo_uri = "mongodb+srv://tezodipta04:tezodipta04@cluster0.engiim1.mongodb.net/"
+mongo_uri = "mongodb+srv://ayushkhatri362:ayushkhatri217@cluster0.engiim1.mongodb.net/"
 
 # Connect to MongoDB
 client = pymongo.MongoClient(mongo_uri)
 
 # Access database
-db = client["Tradeon"]
+db = client["mernauth"]
 
 # Access collection
-collection = db["web_data"]
+collection = db["web-data"]
 
 # Load JSON data from file
-json_file_path = r"D:\Mongo\jsonExp.json"
+json_file_path = r"D:\Tradeon\Tradon\Mongo\scrapped1.json"
 try:
     with open(json_file_path, "r") as file:
         json_data = json.load(file)
