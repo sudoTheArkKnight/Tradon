@@ -14,6 +14,8 @@ sp500["Tomorrow"] = sp500["Close"].shift(-1)
 sp500["Target"] = (sp500["Tomorrow"] > sp500["Close"]).astype(int)
 sp500 = sp500.loc["1990-01-01":].copy()
 
+pd.sp500.to_json()
+
 from sklearn.ensemble import RandomForestClassifier
 
 model = RandomForestClassifier(n_estimators=10000, min_samples_split=100, random_state=1)

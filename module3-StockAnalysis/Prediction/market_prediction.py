@@ -36,3 +36,17 @@ def get_prediction(ticker):
 ticker = "AMZ"
 prediction, date = get_prediction(ticker)
 print(f"Prediction for {date}: {prediction}")
+
+
+def display():
+    today = yf.Ticker("HDFCBANK.NS")
+    today = today.history("1d")
+
+    cols = ["Dividends", "Stock Splits"]
+    today = today.drop(columns=cols)
+    today.index = pd.to_datetime(today.index)
+
+    df_dict = today.to_dict(orient='records')
+    print(df_dict)
+
+display()

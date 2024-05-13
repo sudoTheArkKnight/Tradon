@@ -1,6 +1,8 @@
 import yfinance as yf
 import pandas as pd
 import os
+import json
+
 
 sp500 = yf.Ticker("GOOG")
 sp500 = sp500.history(period="max")
@@ -57,4 +59,3 @@ def predict(train, test, predictors, model):
 predictions = backtest(sp500, model, new_predictors)
 predictions["Predictions"].value_counts()
 print(precision_score(predictions["Target"], predictions["Predictions"]))
-
