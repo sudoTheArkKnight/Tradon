@@ -84,7 +84,7 @@ const ShareCard = ({ image, shareName, high, low, week, data, id }) => {
                 <Line
                     type="monotone"
                     dataKey="price"
-                    stroke="#fff"
+                    stroke="#008000"
                     dot={false}
                 />
             </LineChart>
