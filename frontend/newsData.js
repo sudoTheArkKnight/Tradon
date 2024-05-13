@@ -64,6 +64,22 @@ const newsData = [
         data: "ICICI Bank reported a net profit of Rs 4,402 crore for the fourth quarter ended March 2024, up 260% year-over-year. The bank's total income rose to Rs 28,806 crore, up 22% from the same period last year.",
     },
     {
+        company: "HDFC",
+        data: "HDFC Bank reported a net profit of Rs 10,224 crore for the fourth quarter ended March 2024, up 27% year-over-year. The bank's total income rose to Rs 52,620 crore, up 16% from the same period last year.",
+    },
+    {
+        company: "TiTan",
+        data: "Titan Company Ltd. reported a net profit of Rs 1,014 crore for the fourth quarter ended March 2024, up 30% year-over-year. The company's total income rose to Rs 11,278 crore, up 21% from the same period last year.",
+    },
+    {
+        company: "HAL",
+        data: "Hindustan Aeronautics Limited (HAL) reported a net profit of Rs 1,500 crore for the fourth quarter ended March 2024, up 25% year-over-year. The company's total income rose to Rs 12,345 crore, up 15% from the same period last year.",
+    },
+    {
+        company: "SBI",
+        data: "State Bank of India (SBI) reported a net profit of Rs 7,627 crore for the fourth quarter ended March 2024, up 23% year-over-year. The bank's total income rose to Rs 77,456 crore, up 14% from the same period last year.",
+    },
+    {
         company: "ICICI",
         data: "ICICI Bank announced plans to raise up to Rs 20,000 crore through a qualified institutional placement (QIP) to support business growth and strengthen its balance sheet.",
     },
