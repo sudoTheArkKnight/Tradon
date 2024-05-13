@@ -15,33 +15,39 @@ const Header = () => {
 
     const [logoutApiCall] = useLogoutMutation();
 
-
-const logoutHandler = async () => {
-    const confirmLogout = window.confirm(
-        <div style={{ color: 'red', fontSize: '1.2rem' }}>
-            Are you sure you want to log out?
-        </div>
-    );
-    if (confirmLogout) {
-        try {
-            await logoutApiCall().unwrap();
-            dispatch(logout());
-            navigate("/login");
-        } catch (err) {
-            console.error(err);
+    const logoutHandler = async () => {
+        const confirmLogout = window.confirm(
+            <div style={{ color: "red", fontSize: "1.2rem" }}>
+                Are you sure you want to log out?
+            </div>
+        );
+        if (confirmLogout) {
+            try {
+                await logoutApiCall().unwrap();
+                dispatch(logout());
+                navigate("/login");
+            } catch (err) {
+                console.error(err);
+            }
         }
-    }
-};
-
-
+    };
 
     return (
         <header>
             <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
                 <Container>
-                    <LinkContainer to="/">
-                        <Navbar.Brand>TRADEON</Navbar.Brand>
-                    </LinkContainer>
+                    <div>
+                        {userInfo ? (
+                            <LinkContainer to="/sharesScreen">
+                                <Navbar.Brand>TRADEON</Navbar.Brand>
+                            </LinkContainer>
+                        ) : (
+                            <LinkContainer to="/">
+                                <Navbar.Brand>TRADEON</Navbar.Brand>
+                            </LinkContainer>
+                        )}
+                    </div>
+
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
