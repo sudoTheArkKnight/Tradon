@@ -13,7 +13,7 @@ import newsData from "../../newsData";
 import { Link } from "react-router-dom";
 const SharesScreen = () => {
     const [selectedShareName, setSelectedShareName] = useState(
-        sharedata[3].shareName
+        sharedata[0].shareName
     );
     const selectedShare = sharedata.find(
         (s) => s.shareName === selectedShareName
@@ -81,7 +81,12 @@ const ShareCard = ({ image, shareName, high, low, week, data, id }) => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="price" stroke="#fff" />
+                <Line
+                    type="monotone"
+                    dataKey="price"
+                    stroke="#fff"
+                    dot={false}
+                />
             </LineChart>
             <h3>{high}</h3>
             <h3>{low}</h3>
