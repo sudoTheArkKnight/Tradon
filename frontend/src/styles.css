@@ -4,9 +4,8 @@
 @tailwind utilities;
 
 .bgImg {
-    background: url("/bg-image.svg");
+    background: url("/bg.svg");
 }
-
 html,
 body,
 #root {
@@ -16,6 +15,7 @@ body,
 a {
     color: white;
     text-decoration: none;
+    text-decoration-color: #1d2a4e;
 }
 .bgSecondary {
     background-color: #1d2a4e;
@@ -97,12 +97,24 @@ a {
 
 .newsCard {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .ncard {
     display: flex;
     margin-right: 50px;
     padding: 50px;
+    margin-bottom: 50px;
+    background-color: #202545;
+    border-radius: 25px;
+    width: calc(90% / 3);
+    box-sizing: border-box;
+}
+.ncard2 {
+    display: flex;
+    margin-right: 50px;
+    padding: 50px;
+    margin-bottom: 50px;
     background-color: #202545;
     border-radius: 25px;
 }
@@ -120,6 +132,8 @@ a {
 
 .selectedShareDescription {
     color: white;
+    padding-left: 55px;
+    padding-right: 110px;
 }
 
 .shareDetailsSection {
@@ -135,6 +149,8 @@ a {
     align-items: center;
     gap: 20px;
     padding-top: 20px;
+    margin-bottom: 80px;
+    margin-top: 50px;
 }
 
 .sdd2 {
@@ -142,11 +158,11 @@ a {
     align-items: center;
     gap: 20px;
     background-color: #1d2a4e;
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    border-radius: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
 }
 
 .sdmaindiv {
@@ -155,25 +171,30 @@ a {
 .sdsubdiv {
     width: 70%;
 }
+.sdnewshead {
+    margin-top: 50px;
+}
 .sdnews {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     /* margin-bottom: 303px; */
     /* background-color: #1d2a4e; */
     flex-wrap: wrap;
     width: 30%;
-    margin-top: 20px;
+    margin-top: 140px;
     margin-bottom: 30px;
 }
-.down{
+
+.down {
     width: 60px;
     height: 40px;
 }
-.sdnews h2{
+.sdnews h2 {
     margin-bottom: 40px;
 }
 
-.sdnewsCard{
+.sdnewsCard {
     margin-bottom: 30px;
 }
