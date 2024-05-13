@@ -17,9 +17,7 @@ const Header = () => {
 
     const logoutHandler = async () => {
         const confirmLogout = window.confirm(
-            <div style={{ color: "red", fontSize: "1.2rem" }}>
-                Are you sure you want to log out?
-            </div>
+                "Are you sure you want to log out?"
         );
         if (confirmLogout) {
             try {

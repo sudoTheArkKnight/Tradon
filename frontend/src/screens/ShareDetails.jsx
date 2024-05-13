@@ -47,7 +47,8 @@ export default function ShareData() {
                                 type="monotone"
                                 dataKey="price"
                                 stroke="#008000"
-                                strokeWidth={5}
+                                strokeWidth={4}
+                                dot={false}
                             />
                         </LineChart>
                         <div className="selectedShareDescription">
