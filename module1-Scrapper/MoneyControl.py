@@ -43,11 +43,11 @@ def main():
     """
     Main function to execute web scraping and save data to a JSON file.
     """
-    url = 'https://www.moneycontrol.com/news/business/hitachi-energy-eyes-expansion-in-india-amid-rising-power-demand-12707049.html'
+    url = input("enter the URL :: ")
     article_data = get_article_data(url)
 
     # Save the extracted data to a JSON file with indentation
-    with open('scrapped4.json', 'w') as f:
+    with open('moneycontrol.json', 'w') as f:
         json.dump(article_data, f, indent=4)
 
 # in the next iteration the data will directly be uploaded to the database
