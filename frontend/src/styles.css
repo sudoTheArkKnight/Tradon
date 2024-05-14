@@ -130,6 +130,30 @@ a {
     flex: 1;
 }
 
+.sharehighlow{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 30px;
+}
+
+/* .sharehighlow{
+    display: flex;
+    width: 30%;
+    margin-left: 90px;
+} */
+
+.sharehighlow2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    margin-left: 750px;
+    font-weight: bold;
+    margin-top: 70px;
+    /* background-color: green; */
+    /* gap: 70px; */
+}
 .selectedShareDescription {
     color: white;
     padding-left: 55px;

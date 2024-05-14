@@ -21,7 +21,16 @@ const SharesScreen = () => {
     console.log(selectedShareName);
     return (
         <section className="shareSection bgImg">
-            <h2 className="shareHeading">Welcome</h2>
+            <div className="sharehighlow">
+                <h2 className="shareHeading">Welcome</h2>
+                {/* <div className="sharehighlow1"> */}
+                    <div className="sharehighlow2">
+                        <p className="p1">High</p>
+                        <p className="p2">Low</p>
+                        <p className="p3">Pvr Close </p>
+                    </div>
+                {/* </div> */}
+            </div>
             <div className="shareContainer">
                 <div className="shareDiv">
                     <a href={`/share/${selectedShare.id}`}>
