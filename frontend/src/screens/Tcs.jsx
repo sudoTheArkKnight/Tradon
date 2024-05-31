@@ -11,6 +11,8 @@ import {
 import axios from "axios";
 // import { useParams } from "react-router-dom";
 // import sharedata from "../../stockData";
+import sharedata from "../../sharedata";
+
 export default function Tcs() {
     // const params = useParams();
     // const sharedata[8] = sharedata.find((s) => s.id === params.id);
@@ -46,13 +48,13 @@ export default function Tcs() {
                 <div className="sdsubdiv">
                     <div className="shareDetailsDiv">
                         <div className="sdd2">
-                            {/* <img
+                            <img
                                 src={`../../public/${sharedata[8].image}`}
                                 alt={sharedata[8].shareName}
                                 className="imagelogo"
                             />
                             <span>{sharedata[8].shareName}</span>
-                            <span>₹ {sharedata[8].high}</span> */}
+                            <span>₹ {sharedata[8].high}</span>
                         </div>
                     </div>
                     <div className="graph">
@@ -88,18 +90,18 @@ export default function Tcs() {
                             <Legend />
                         </LineChart>
                         <div className="selectedShareDescription">
-                            {/* {sharedata[8].description} */}
+                            {sharedata[8].description}
                         </div>
                     </div>
                 </div>
                 <div className="sdnews">
-                    {/* <div className="sdnewsimage">
+                    <div className="sdnewsimage">
                         {sharedata[8].gainLoss == 0 ? (
                             <img src="../../public/up.svg" alt="Image 1" />
                         ) : (
                             <img src="../../public/down.svg" alt="Image 2" />
                         )}
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </section>

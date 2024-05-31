@@ -8,13 +8,11 @@ import {
     Tooltip,
     Legend,
 } from "recharts";
+import sharedata from "../../sharedata";
+
 import axios from "axios";
-// import  sharedata from "../../stockData";
-// import { useParams } from "react-router-dom";
-// import sharedata from "../../stockData";
 export default function Icici() {
-    // const params = useParams();
-    // const selectedShare = sharedata.find((s) => s.id === params.id);
+    console.log("sharedata", sharedata);
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -47,13 +45,13 @@ export default function Icici() {
                 <div className="sdsubdiv">
                     <div className="shareDetailsDiv">
                         <div className="sdd2">
-                            {/* <img
+                            <img
                                 src={`../../public/${sharedata[0].image}`}
                                 alt={sharedata[0].shareName}
                                 className="imagelogo"
                             />
                             <span>{sharedata[0].shareName}</span>
-                            <span>₹ {sharedata[0].high}</span> */}
+                            <span>₹ {sharedata[0].high}</span>
                         </div>
                     </div>
                     <div className="graph">
@@ -89,17 +87,17 @@ export default function Icici() {
                             <Legend />
                         </LineChart>
                         <div className="selectedShareDescription">
-                            {/* {sharedata[0].description} */}
+                            {sharedata[0].description}
                         </div>
                     </div>
                 </div>
                 <div className="sdnews">
                     <div className="sdnewsimage">
-                        {/* {sharedata[0].gainLoss == 0 ? (
+                        {sharedata[0].gainLoss == 0 ? (
                             <img src="../../public/up.svg" alt="Image 1" />
                         ) : (
                             <img src="../../public/down.svg" alt="Image 2" />
-                        )} */}
+                        )}
                     </div>
                 </div>
             </div>

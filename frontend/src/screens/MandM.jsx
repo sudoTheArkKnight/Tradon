@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 // import { useParams } from "react-router-dom";
 // import sharedata from "../../stockData";
+import sharedata from "../../sharedata";
 export default function MandM() {
     // const params = useParams();
     // const sharedata[6] = sharedata.find((s) => s.id === params.id);
@@ -46,13 +47,13 @@ export default function MandM() {
                 <div className="sdsubdiv">
                     <div className="shareDetailsDiv">
                         <div className="sdd2">
-                            {/* <img
+                            <img
                                 src={`../../public/${sharedata[6].image}`}
                                 alt={sharedata[6].shareName}
                                 className="imagelogo"
                             />
                             <span>{sharedata[6].shareName}</span>
-                            <span>₹ {sharedata[6].high}</span> */}
+                            <span>₹ {sharedata[6].high}</span>
                         </div>
                     </div>
                     <div className="graph">
@@ -88,17 +89,17 @@ export default function MandM() {
                             <Legend />
                         </LineChart>
                         <div className="selectedShareDescription">
-                            {/* {sharedata[6].description} */}
+                            {sharedata[6].description}
                         </div>
                     </div>
                 </div>
                 <div className="sdnews">
                     <div className="sdnewsimage">
-                        {/* {sharedata[6].gainLoss == 0 ? (
+                        {sharedata[6].gainLoss == 0 ? (
                             <img src="../../public/up.svg" alt="Image 1" />
                         ) : (
                             <img src="../../public/down.svg" alt="Image 2" />
-                        )} */}
+                        )}
                     </div>
                 </div>
             </div>

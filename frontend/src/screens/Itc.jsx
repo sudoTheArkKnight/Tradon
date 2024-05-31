@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 // import { useParams } from "react-router-dom";
 // import sharedata from "../../stockData";
+import sharedata from "../../sharedata";
 export default function Itc() {
     // const params = useParams();
     // const sharedata[5] = sharedata.find((s) => s.id === params.id);
@@ -46,13 +47,13 @@ export default function Itc() {
                 <div className="sdsubdiv">
                     <div className="shareDetailsDiv">
                         <div className="sdd2">
-                            {/* <img
+                            <img
                                 src={`../../public/${sharedata[5].image}`}
                                 alt={sharedata[5].shareName}
                                 className="imagelogo"
                             />
                             <span>{sharedata[5].shareName}</span>
-                            <span>₹ {sharedata[5].high}</span> */}
+                            <span>₹ {sharedata[5].high}</span>
                         </div>
                     </div>
                     <div className="graph">
@@ -88,17 +89,17 @@ export default function Itc() {
                             <Legend />
                         </LineChart>
                         <div className="selectedShareDescription">
-                            {/* {sharedata[5].description} */}
+                            {sharedata[5].description}
                         </div>
                     </div>
                 </div>
                 <div className="sdnews">
                     <div className="sdnewsimage">
-                        {/* {sharedata[5].gainLoss == 0 ? (
+                        {sharedata[5].gainLoss == 0 ? (
                             <img src="../../public/up.svg" alt="Image 1" />
                         ) : (
                             <img src="../../public/down.svg" alt="Image 2" />
-                        )} */}
+                        )}
                     </div>
                 </div>
             </div>
