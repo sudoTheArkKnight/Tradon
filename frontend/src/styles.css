@@ -84,10 +84,27 @@ a {
     /* margin-bottom: 20px; */
     margin-top: 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
-
+.shareCarddiv1 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    align-items: center;
+    width: 50%;
+}
+.shareCarddiv2 {
+    display: flex;
+    justify-content: space-around;
+    margin-left: 150px;
+    font-size: 30px;
+    font-weight: bold;
+    gap: 50px;
+    align-items: center;
+    width: 30%;
+    /* background-color: red; */
+}
 .sharecard a {
     text-decoration: none;
 }
@@ -130,7 +147,7 @@ a {
     flex: 1;
 }
 
-.sharehighlow{
+.sharehighlow {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -143,7 +160,7 @@ a {
     margin-left: 90px;
 } */
 
-.sharehighlow2{
+.sharehighlow2 {
     display: flex;
     justify-content: space-between;
     align-items: center;

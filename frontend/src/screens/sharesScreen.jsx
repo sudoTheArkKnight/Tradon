@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo, lazy, Suspense } from "react";
 import {
     LineChart,
     Line,
@@ -8,103 +8,137 @@ import {
     Tooltip,
     Legend,
 } from "recharts";
-import sharedata from "../../stockData";
-import newsData from "../../newsData";
+import axios from "axios";
 import { Link } from "react-router-dom";
+import Loader from "../components/Loader";
+import { sharedata } from "../../stockData";
+
+const ShareCard = lazy(() => import("../components/ShareCard"));
+
+const collections = [
+    { name: "icici", url: "/icici" },
+    { name: "hdfc", url: "/hdfc" },
+    { name: "google", url: "/google" },
+    { name: "mrf", url: "/mrf" },
+    { name: "hal", url: "/hal" },
+    { name: "itc", url: "/itc" },
+    { name: "mandm", url: "/mandm" },
+    { name: "sbi", url: "/sbi" },
+    { name: "tcs", url: "/tcs" },
+    { name: "titan", url: "/titan" },
+];
+
 const SharesScreen = () => {
-    const [selectedShareName, setSelectedShareName] = useState(
-        sharedata[0].shareName
-    );
-    const selectedShare = sharedata.find(
-        (s) => s.shareName === selectedShareName
-    );
-    console.log(selectedShareName);
+    const [news, setNews] = useState([]);
+    const [allData, setAllData] = useState({});
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchNews = async () => {
+            try {
+                const response = await axios.get(
+                    "http://localhost:5000/getNews"
+                );
+                setNews(response.data);
+            } catch (error) {
+                console.error("There was an error fetching the news!", error);
+            }
+        };
+
+        const fetchData = async () => {
+            try {
+                const dataPromises = collections.map((collection) =>
+                    axios
+                        .get(
+                            `http://localhost:5000/getGraph/${collection.name}`
+                        )
+                        .then((response) => ({
+                            collection: collection.name,
+                            data: response.data.map((item) => ({
+                                date: new Date(item.date).toLocaleDateString(),
+                                open: item.Open,
+                                high: item.High,
+                                low: item.Low,
+                                close: item.Close,
+                                volume: item.Volume,
+                                tomorrow: item.Tomorrow,
+                                target: item.Target,
+                            })),
+                        }))
+                );
+                const allDataResponses = await Promise.all(dataPromises);
+                const dataMap = allDataResponses.reduce(
+                    (acc, { collection, data }) => {
+                        acc[collection] = data;
+                        return acc;
+                    },
+                    {}
+                );
+                setAllData(dataMap);
+            } catch (error) {
+                console.error(
+                    "There was an error fetching the stock data!",
+                    error
+                );
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchNews();
+        fetchData();
+    }, []);
+
+    const memoizedCollections = useMemo(() => collections, []);
+
+    if (loading) {
+        return <Loader />;
+    }
+
     return (
         <section className="shareSection bgImg">
             <div className="sharehighlow">
                 <h2 className="shareHeading">Welcome</h2>
-                {/* <div className="sharehighlow1"> */}
-                    <div className="sharehighlow2">
-                        <p className="p1">High</p>
-                        <p className="p2">Low</p>
-                        <p className="p3">Pvr Close </p>
-                    </div>
-                {/* </div> */}
+                <div className="sharehighlow2">
+                    <p className="p1">High</p>
+                    <p className="p2">Low</p>
+                    <p className="p3">Prev Close</p>
+                </div>
             </div>
             <div className="shareContainer">
                 <div className="shareDiv">
-                    <a href={`/share/${selectedShare.id}`}>
-                        {/* <Link
-                    to={{
-                        pathname: `share/1`,
-                        state: selectedShare,
-                    }}
-                > */}
-                        {sharedata.map((stockInfo, index) => (
-                            <div
-                                onClick={() =>
-                                    setSelectedShareName(stockInfo.shareName)
-                                }
-                                key={index}
-                            >
-                                <ShareCard {...stockInfo} />
-                            </div>
-                        ))}
-                        {/* </Link> */}
-                    </a>
+                    {memoizedCollections.map((stockInfo, index) => (
+                        <Link to={stockInfo.url} key={index}>
+                            <Suspense fallback={<Loader />}>
+                                <ShareCard
+                                    data={stockInfo}
+                                    allData={allData}
+                                    stockData={sharedata[index]}
+                                />
+                            </Suspense>
+                        </Link>
+                    ))}
                 </div>
             </div>
             <h1>News</h1>
             <div className="newsCard">
-                {newsData.map((data, index) => (
-                    <NewsCard key={index} {...data} />
+                <h1>Users List</h1>
+                {news.map((user, index) => (
+                    <div key={index}>
+                        <h2>{user.site_name}</h2>
+                        <div>{user.left_block_content}</div>
+                        <ul>
+                            {user.p_tags.map((tag, i) => (
+                                <li key={i}>
+                                    {tag} <br /> <br />
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 ))}
             </div>
-            {/* <Link
-                to={{
-                    pathname: "/ShareDetails",
-                    state: { shareData: selectedShare }, // Pass your ShareData here
-                }}
-            >
-                <div className="newsCard">
-                    {newsData.map((data, index) => (
-                        <NewsCard key={index} {...data} />
-                    ))}
-                </div>
-            </Link> */}
-            {/* <Link to="/ShareDetails">
-                <ShareDetails share={selectedShare} />
-            </Link> */}
         </section>
     );
 };
 
-const ShareCard = ({ image, shareName, high, low, week, data, id }) => {
-    return (
-        <div className="sharecard">
-            <img src={image} alt={shareName} className="sharecardImage" />
-            <h3>{shareName}</h3>
-            <LineChart width={400} height={150} data={data}>
-                {/* <CartesianGrid strokeDasharray="5 5" /> */}
-                <XAxis dataKey="date" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Line
-                    type="monotone"
-                    dataKey="price"
-                    stroke="#008000"
-                    dot={false}
-                />
-            </LineChart>
-            <h3>{high}</h3>
-            <h3>{low}</h3>
-            <h3>{week}</h3>
-        </div>
-    );
-};
-
-const NewsCard = ({ data }) => {
-    return <div className="ncard">{data}</div>;
-};
 export default SharesScreen;
