@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import axios from "axios";
 // import { useParams } from "react-router-dom";
-// import sharedata from "../../stockData";
+import sharedata from "../../sharedata";
 export default function Hdfc() {
     // const params = useParams();
     // const sharedata[1] = sharedata.find((s) => s.id === params.id);
@@ -46,13 +46,13 @@ export default function Hdfc() {
                 <div className="sdsubdiv">
                     <div className="shareDetailsDiv">
                         <div className="sdd2">
-                            {/* <img
+                            <img
                                 src={`../../public/${sharedata[1].image}`}
                                 alt={sharedata[1].shareName}
                                 className="imagelogo"
                             />
                             <span>{sharedata[1].shareName}</span>
-                            <span>₹ {sharedata[1].high}</span> */}
+                            <span>₹ {sharedata[1].high}</span>
                         </div>
                     </div>
                     <div className="graph">
@@ -88,17 +88,17 @@ export default function Hdfc() {
                             <Legend />
                         </LineChart>
                         <div className="selectedShareDescription">
-                            {/* {sharedata[1].description} */}
+                            {sharedata[1].description}
                         </div>
                     </div>
                 </div>
                 <div className="sdnews">
                     <div className="sdnewsimage">
-                        {/* {sharedata[1].gainLoss == 0 ? (
+                        {sharedata[1].gainLoss == 0 ? (
                             <img src="../../public/up.svg" alt="Image 1" />
                         ) : (
                             <img src="../../public/down.svg" alt="Image 2" />
-                        )} */}
+                        )}
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@
 // { name: "sbi", url: "/sbi" },
 // { name: "tcs", url: "/tcs" },
 // { name: "titan", url: "/titan" },
-export const sharedata = [
+ const sharedata = [
     {
         id: "1",
 
@@ -117,3 +117,5 @@ export const sharedata = [
         gainLoss: "1",
     },
 ];
+
+export default sharedata

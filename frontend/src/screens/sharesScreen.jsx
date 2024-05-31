@@ -11,7 +11,7 @@ import {
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
-import { sharedata } from "../../stockData";
+import sharedata  from "../../sharedata";
 
 const ShareCard = lazy(() => import("../components/ShareCard"));
 

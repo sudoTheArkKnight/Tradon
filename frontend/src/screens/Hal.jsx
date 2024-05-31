@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import axios from "axios";
 // import { useParams } from "react-router-dom";
-// import sharedata from "../../stockData";
+import sharedata from "../../sharedata";
 export default function Hal() {
     // const params = useParams();
     // const sharedata[4] = sharedata.find((s) => s.id === params.id);
@@ -46,17 +46,17 @@ export default function Hal() {
                 <div className="sdsubdiv">
                     <div className="shareDetailsDiv">
                         <div className="sdd2">
-                            {/* <img
+                            <img
                                 src={`../../public/${sharedata[4].image}`}
                                 alt={sharedata[4].shareName}
                                 className="imagelogo"
                             />
                             <span>{sharedata[4].shareName}</span>
-                            <span>₹ {sharedata[4].high}</span> */}
+                            <span>₹ {sharedata[4].high}</span>
                         </div>
                     </div>
                     <div className="graph">
-                        <LineChart width={400} height={200} data={data}>
+                        <LineChart width={800} height={400} data={data}>
                             <Line
                                 type="monotone"
                                 dataKey="open"
@@ -88,17 +88,17 @@ export default function Hal() {
                             <Legend />
                         </LineChart>
                         <div className="selectedShareDescription">
-                            {/* {sharedata[4].description} */}
+                            {sharedata[4].description}
                         </div>
                     </div>
                 </div>
                 <div className="sdnews">
                     <div className="sdnewsimage">
-                        {/* {sharedata[4].gainLoss == 0 ? (
+                        {sharedata[4].gainLoss == 0 ? (
                             <img src="../../public/up.svg" alt="Image 1" />
                         ) : (
                             <img src="../../public/down.svg" alt="Image 2" />
-                        )} */}
+                        )}
                     </div>
                 </div>
             </div>
