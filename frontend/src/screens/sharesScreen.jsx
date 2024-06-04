@@ -1,17 +1,8 @@
 import React, { useState, useEffect, useMemo, lazy, Suspense } from "react";
-import {
-    LineChart,
-    Line,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend,
-} from "recharts";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
-import sharedata  from "../../sharedata";
+import sharedata from "../../sharedata";
 
 const ShareCard = lazy(() => import("../components/ShareCard"));
 
@@ -54,15 +45,11 @@ const SharesScreen = () => {
                         )
                         .then((response) => ({
                             collection: collection.name,
-                            data: response.data.map((item) => ({
+                            data: response.data.slice(-30).map((item) => ({
                                 date: new Date(item.date).toLocaleDateString(),
-                                open: item.Open,
+                                close: item.Close,
                                 high: item.High,
                                 low: item.Low,
-                                close: item.Close,
-                                volume: item.Volume,
-                                tomorrow: item.Tomorrow,
-                                target: item.Target,
                             })),
                         }))
                 );
@@ -94,7 +81,7 @@ const SharesScreen = () => {
     if (loading) {
         return <Loader />;
     }
-
+    console.log(allData);
     return (
         <section className="shareSection bgImg">
             <div className="sharehighlow">

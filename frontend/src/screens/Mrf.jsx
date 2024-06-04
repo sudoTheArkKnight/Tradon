@@ -58,7 +58,7 @@ export default function Mrf() {
                         </div>
                     </div>
                     <div className="graph">
-                        <LineChart width={400} height={200} data={data}>
+                        <LineChart width={800} height={400} data={data}>
                             <Line
                                 type="monotone"
                                 dataKey="open"

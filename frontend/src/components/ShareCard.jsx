@@ -1,16 +1,17 @@
+
 import React from "react";
 import {
     LineChart,
     Line,
     XAxis,
     YAxis,
-    CartesianGrid,
     Tooltip,
-    Legend,
 } from "recharts";
 
 const ShareCard = ({ data, allData, stockData }) => {
-    console.log(stockData);
+    const stockDataArray = allData[data.name] || [];
+    const lastData = stockDataArray[0] || {};
+    
     return (
         <div className="sharecard">
             <div className="shareCarddiv1">
@@ -23,43 +24,26 @@ const ShareCard = ({ data, allData, stockData }) => {
                 <LineChart
                     width={400}
                     height={200}
-                    data={allData[data.name] || []}
+                    data={stockDataArray}
                 >
                     <Line
                         type="monotone"
-                        dataKey="open"
-                        stroke="#8884d8"
-                        dot={false}
-                    />
-                    <Line
-                        type="monotone"
-                        dataKey="high"
-                        stroke="#82ca9d"
-                        dot={false}
-                    />
-                    <Line
-                        type="monotone"
-                        dataKey="low"
-                        stroke="#ffc658"
-                        dot={false}
-                    />
-                    <Line
-                        type="monotone"
                         dataKey="close"
-                        stroke="#ff7300"
+                        stroke="#00ff00"
                         dot={false}
                     />
-                    <CartesianGrid stroke="#ccc" />
-                    <XAxis dataKey="date" />
-                    <YAxis />
+                    <XAxis hide
+                        dataKey="date" 
+                        reversed={true} // Reverse the x-axis direction
+                    />
+                    <YAxis hide />
                     <Tooltip />
-                    <Legend />
                 </LineChart>
             </div>
             <div className="shareCarddiv2">
-                <p>{stockData.high}</p>
-                <p>{stockData.low}</p>
-                <p>{stockData.week}</p>
+                <p>{Math.round(lastData.high)}</p>
+                <p>{Math.round(lastData.low)}</p>
+                <p>{Math.round(lastData.close)}</p>
             </div>
         </div>
     );
