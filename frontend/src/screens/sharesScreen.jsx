@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import sharedata from "../../sharedata";
+import port from "../../../backendPort";
 
 const ShareCard = lazy(() => import("../components/ShareCard"));
 
@@ -30,7 +31,7 @@ const SharesScreen = () => {
         const fetchNews = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:5000/getNews"
+                    `${port}/getNews`
                 );
                 setNews(response.data);
             } catch (error) {
@@ -43,7 +44,7 @@ const SharesScreen = () => {
                 const dataPromises = collections.map((collection) =>
                     axios
                         .get(
-                            `http://localhost:5000/getGraph/${collection.name}`
+                            `${port}/getGraph/${collection.name}`
                         )
                         .then((response) => ({
                             collection: collection.name,
@@ -109,9 +110,8 @@ const SharesScreen = () => {
                     ))}
                 </div>
             </div>
-            <h1>News</h1>
+            <h1 className="newsWord">News</h1>
             <div className="newsCard">
-                <h1>Users List</h1>
                 {news.map((user, index) => (
                     <div key={index}>
                         <h2>{user.site_name}</h2>

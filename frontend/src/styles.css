@@ -173,8 +173,11 @@ a {
 }
 .selectedShareDescription {
     color: white;
+    font-size: 20px;
+    /* background-color: red; */
+    width: 100%;
     padding-left: 55px;
-    padding-right: 110px;
+    /* padding-right: 110px; */
 }
 
 .shareDetailsSection {
@@ -205,6 +208,10 @@ a {
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 10px;
+}
+.newsWord{
+    text-align: center;
+    padding: 50px 0;
 }
 
 .sdmaindiv {
