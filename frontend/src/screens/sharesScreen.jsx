@@ -20,6 +20,7 @@ const SharesScreen = () => {
     const [news, setNews] = useState([]);
     const [allData, setAllData] = useState({});
     const [loading, setLoading] = useState(true);
+    console.log(allData)
 
     useEffect(() => {
         const fetchNews = async () => {

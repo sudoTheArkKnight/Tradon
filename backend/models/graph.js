@@ -6,7 +6,7 @@ const DataSchema = new mongoose.Schema({
     High: Number,
     Low: Number,
     Close: Number,
-    Volume: Number,
+    // Volume: Number,
     Tomorrow: Number,
     Target: Number,
 });

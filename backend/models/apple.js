@@ -11,6 +11,6 @@ const DataSchema = new mongoose.Schema({
     Target: Number,
 });
 
-const apple = mongoose.model("googles", DataSchema);
+const apple = mongoose.model("apples", DataSchema);
 
 export default apple;

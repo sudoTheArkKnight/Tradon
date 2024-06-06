@@ -106,9 +106,9 @@ display()
 # client = pymongo.MongoClient("mongodb+srv://tezodipta04:tezodipta04@cluster0.engiim1.mongodb.net/test?retryWrites=true&w=majority")
 # db = client['test']
 # collection = db['googles']
-#
+
 # # Insert the document into the collection
 # collection.insert_one(df_dict[0])
-#
+
 # # Close the connection
 # client.close()

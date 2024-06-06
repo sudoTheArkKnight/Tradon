@@ -38,7 +38,7 @@
         id: "6",
         image: "./amazon.png",
         shareName: "AMAZON",
-        Description: "Amazon.com, Inc. is a multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence. Founded by Jeff Bezos, Amazon started as an online bookstore and expanded to offer a vast array of products and services, including Amazon Prime, Amazon Web Services (AWS), and Alexa. Amazon is known for its customer-centric approach, rapid delivery services, and innovation in areas such as logistics, entertainment, and smart home technology. It is one of the world's largest online marketplaces and a leader in cloud computing." ,
+        description: "Amazon.com, Inc. is a multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence. Founded by Jeff Bezos, Amazon started as an online bookstore and expanded to offer a vast array of products and services, including Amazon Prime, Amazon Web Services (AWS), and Alexa. Amazon is known for its customer-centric approach, rapid delivery services, and innovation in areas such as logistics, entertainment, and smart home technology. It is one of the world's largest online marketplaces and a leader in cloud computing." ,
         
     },
     

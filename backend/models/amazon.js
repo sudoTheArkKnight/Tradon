@@ -11,6 +11,6 @@ const DataSchema = new mongoose.Schema({
     Target: Number,
 });
 
-const amazon = mongoose.model("amazon", DataSchema);
+const amazon = mongoose.model("amazons", DataSchema);
 
 export default amazon;
