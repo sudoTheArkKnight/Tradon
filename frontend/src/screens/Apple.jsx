@@ -11,16 +11,14 @@ import {
 import axios from "axios";
 // import { useParams } from "react-router-dom";
 import sharedata from "../../sharedata";
-export default function Google() {
+export default function Apple() {
     // const params = useParams();
     // const sharedata[2] = sharedata.find((s) => s.id === params.id);
-const [data, setData] = useState([]); 
-
-   
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         axios
-            .get("http://localhost:5000/getGoogle")
+            .get("http://localhost:5000/getApple")
             .then((response) => {
                 setData(
                     response.data.map((item) => ({
@@ -49,12 +47,12 @@ const [data, setData] = useState([]);
                     <div className="shareDetailsDiv">
                         <div className="sdd2">
                             <img
-                                src={`../../public/${sharedata[2].image}`}
-                                alt={sharedata[2].shareName}
+                                src={`../../public/${sharedata[4].image}`}
+                                alt={sharedata[4].shareName}
                                 className="imagelogo"
                             />
-                            <span>{sharedata[2].shareName}</span>
-                            {/* <span>₹ {lastHigh !== null ? lastHigh : ""}</span> */}
+                            <span>{sharedata[4].shareName}</span>
+                            <span>₹ {sharedata[4].high}</span>
                         </div>
                     </div>
                     <div className="graph">

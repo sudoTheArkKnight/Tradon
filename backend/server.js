@@ -188,75 +188,88 @@ app.get("/getIcici", (req, res) => {
         .catch((err) => res.status(500).json({ error: err.message }));
 });
 
-app.get("/getMrf", (req, res) => {
-    mrf
-        .find()
-        .then((i) => res.json(i))
-        .catch((err) => res.status(500).json({ error: err.message }));
-});
 
 app.get("/getHdfc", (req, res) => {
     hdfc
-        .find()
-        .then((i) => res.json(i))
-        .catch((err) => res.status(500).json({ error: err.message }));
+    .find()
+    .then((i) => res.json(i))
+    .catch((err) => res.status(500).json({ error: err.message }));
 });
 
 app.get("/getGoogle", (req, res) => {
     google
-        .find()
-        .then((g) => res.json(g))
-        .catch((err) => res.status(500).json({ error: err.message }));
+    .find()
+    .then((g) => res.json(g))
+    .catch((err) => res.status(500).json({ error: err.message }));
 });
 
 app.get("/getHal", (req, res) => {
     hal
-        .find()
-        .then((h) => res.json(h))
-        .catch((err) => res.status(500).json({ error: err.message }));
+    .find()
+    .then((h) => res.json(h))
+    .catch((err) => res.status(500).json({ error: err.message }));
+});
+app.get("/getApple", (req, res) => {
+    apple
+    .find()
+    .then((h) => res.json(h))
+    .catch((err) => res.status(500).json({ error: err.message }));
+});
+app.get("/getAmazon", (req, res) => {
+    amazon
+    .find()
+    .then((h) => res.json(h))
+    .catch((err) => res.status(500).json({ error: err.message }));
 });
 
-app.get("/getInfy", (req, res) => {
-    infy
-        .find()
-        .then((i) => res.json(i))
-        .catch((err) => res.status(500).json({ error: err.message }));
-});
+// app.get("/getMrf", (req, res) => {
+//     mrf
+//         .find()
+//         .then((i) => res.json(i))
+//         .catch((err) => res.status(500).json({ error: err.message }));
+// });
 
-app.get("/getItc", (req, res) => {
-    itc
-        .find()
-        .then((i) => res.json(i))
-        .catch((err) => res.status(500).json({ error: err.message }));
-});
+// app.get("/getInfy", (req, res) => {
+//     infy
+//         .find()
+//         .then((i) => res.json(i))
+//         .catch((err) => res.status(500).json({ error: err.message }));
+// });
 
-app.get("/getMandM", (req, res) => {
-    mandm
-        .find()
-        .then((m) => res.json(m))
-        .catch((err) => res.status(500).json({ error: err.message }));
-});
+// app.get("/getItc", (req, res) => {
+//     itc
+//         .find()
+//         .then((i) => res.json(i))
+//         .catch((err) => res.status(500).json({ error: err.message }));
+// });
 
-app.get("/getSbi", (req, res) => {
-    sbi
-        .find()
-        .then((s) => res.json(s))
-        .catch((err) => res.status(500).json({ error: err.message }));
-});
+// app.get("/getMandM", (req, res) => {
+//     mandm
+//         .find()
+//         .then((m) => res.json(m))
+//         .catch((err) => res.status(500).json({ error: err.message }));
+// });
 
-app.get("/getTcs", (req, res) => {
-    tcs
-        .find()
-        .then((t) => res.json(t))
-        .catch((err) => res.status(500).json({ error: err.message }));
-});
+// app.get("/getSbi", (req, res) => {
+//     sbi
+//         .find()
+//         .then((s) => res.json(s))
+//         .catch((err) => res.status(500).json({ error: err.message }));
+// });
 
-app.get("/getTitan", (req, res) => {
-    titan
-        .find()
-        .then((t) => res.json(t))
-        .catch((err) => res.status(500).json({ error: err.message }));
-});
+// app.get("/getTcs", (req, res) => {
+//     tcs
+//         .find()
+//         .then((t) => res.json(t))
+//         .catch((err) => res.status(500).json({ error: err.message }));
+// });
+
+// app.get("/getTitan", (req, res) => {
+//     titan
+//         .find()
+//         .then((t) => res.json(t))
+//         .catch((err) => res.status(500).json({ error: err.message }));
+// });
 
 app.use(notFound);
 app.use(errorHandler);
