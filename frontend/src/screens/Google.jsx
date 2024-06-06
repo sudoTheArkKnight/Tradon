@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
     LineChart,
     Line,
@@ -9,31 +9,35 @@ import {
     Legend,
 } from "recharts";
 import axios from "axios";
-// import { useParams } from "react-router-dom";
+import port from "../../../backendPort";
 import sharedata from "../../sharedata";
-export default function Google() {
-    // const params = useParams();
-    // const sharedata[2] = sharedata.find((s) => s.id === params.id);
-const [data, setData] = useState([]); 
 
-   
+export default function Google() {
+    const [data, setData] = useState([]);
+    const [shareInfo, setShareInfo] = useState(null);
 
     useEffect(() => {
+        // Fetch the share data from the API
         axios
-            .get("http://localhost:5000/getGoogle")
+            .get(`${port}/getGoogle`)
             .then((response) => {
-                setData(
-                    response.data.map((item) => ({
-                        date: new Date(item.date).toLocaleDateString(),
-                        open: item.Open,
-                        high: item.High,
-                        low: item.Low,
-                        close: item.Close,
-                        volume: item.Volume,
-                        tomorrow: item.Tomorrow,
-                        target: item.Target,
-                    }))
-                );
+                const fetchedData = response.data.map((item) => ({
+                    date: new Date(item.date).toLocaleDateString(),
+                    open: item.Open,
+                    high: item.High,
+                    low: item.Low,
+                    close: item.Close,
+                    volume: item.Volume,
+                    tomorrow: item.Tomorrow,
+                    target: item.Target,
+                }));
+                setData(fetchedData);
+                // Assuming the first entry contains the share info we need to display
+                const lastEntry = fetchedData[fetchedData.length - 1];
+                setShareInfo({
+                    high: lastEntry.high,
+                    gainLoss: lastEntry.target,
+                });
             })
             .catch((error) => {
                 console.error(
@@ -42,6 +46,11 @@ const [data, setData] = useState([]);
                 );
             });
     }, []);
+
+    if (!shareInfo) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <section className="bgImg shareDetailsSection">
             <div className="sdmaindiv">
@@ -54,36 +63,18 @@ const [data, setData] = useState([]);
                                 className="imagelogo"
                             />
                             <span>{sharedata[2].shareName}</span>
-                            {/* <span>₹ {lastHigh !== null ? lastHigh : ""}</span> */}
+                            <span>₹ {shareInfo.high}</span>
                         </div>
                     </div>
                     <div className="graph">
-                        <LineChart width={800} height={400} data={data}>
-                            <Line
-                                type="monotone"
-                                dataKey="open"
-                                stroke="#8884d8"
-                                dot={false}
-                            />
-                            <Line
-                                type="monotone"
-                                dataKey="high"
-                                stroke="#82ca9d"
-                                dot={false}
-                            />
-                            <Line
-                                type="monotone"
-                                dataKey="low"
-                                stroke="#ffc658"
-                                dot={false}
-                            />
+                        <LineChart width={1400} height={600} data={data}>
                             <Line
                                 type="monotone"
                                 dataKey="close"
-                                stroke="#ff7300"
+                                stroke="#00ff00"
                                 dot={false}
                             />
-                            <CartesianGrid stroke="#ccc" />
+                            {/* <CartesianGrid stroke="#ccc" /> */}
                             <XAxis dataKey="date" />
                             <YAxis />
                             <Tooltip />
@@ -96,10 +87,10 @@ const [data, setData] = useState([]);
                 </div>
                 <div className="sdnews">
                     <div className="sdnewsimage">
-                        {sharedata[2].gainLoss == 0 ? (
-                            <img src="../../public/up.svg" alt="Image 1" />
+                        {shareInfo.gainLoss === 0 ? (
+                            <img src="../../public/up.svg" alt="Gain" />
                         ) : (
-                            <img src="../../public/down.svg" alt="Image 2" />
+                            <img src="../../public/down.svg" alt="Loss" />
                         )}
                     </div>
                 </div>

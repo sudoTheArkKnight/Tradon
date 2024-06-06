@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
     LineChart,
     Line,
@@ -8,29 +8,36 @@ import {
     Tooltip,
     Legend,
 } from "recharts";
-import sharedata from "../../sharedata";
-
 import axios from "axios";
+import sharedata from "../../sharedata";
+import port from "../../../backendPort";
+
 export default function Icici() {
-    console.log("sharedata", sharedata);
     const [data, setData] = useState([]);
+    const [shareInfo, setShareInfo] = useState(null);
 
     useEffect(() => {
+        // Fetch the share data from the API
         axios
-            .get("http://localhost:5000/getIcici")
+            .get(`${port}/getIcici`)
             .then((response) => {
-                setData(
-                    response.data.map((item) => ({
-                        date: new Date(item.date).toLocaleDateString(),
-                        open: item.Open,
-                        high: item.High,
-                        low: item.Low,
-                        close: item.Close,
-                        volume: item.Volume,
-                        tomorrow: item.Tomorrow,
-                        target: item.Target,
-                    }))
-                );
+                const fetchedData = response.data.map((item) => ({
+                    date: new Date(item.date).toLocaleDateString(),
+                    open: item.Open,
+                    high: item.High,
+                    low: item.Low,
+                    close: item.Close,
+                    volume: item.Volume,
+                    tomorrow: item.Tomorrow,
+                    target: item.Target,
+                }));
+                setData(fetchedData);
+                // Assuming the first entry contains the share info we need to display
+                const lastEntry = fetchedData[fetchedData.length - 1];
+                setShareInfo({
+                    high: lastEntry.high,
+                    gainLoss: lastEntry.target,
+                });
             })
             .catch((error) => {
                 console.error(
@@ -39,6 +46,11 @@ export default function Icici() {
                 );
             });
     }, []);
+
+    if (!shareInfo) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <section className="bgImg shareDetailsSection">
             <div className="sdmaindiv">
@@ -51,36 +63,18 @@ export default function Icici() {
                                 className="imagelogo"
                             />
                             <span>{sharedata[0].shareName}</span>
-                            <span>₹ {sharedata[0].high}</span>
+                            <span>₹ {shareInfo.high}</span>
                         </div>
                     </div>
                     <div className="graph">
-                        <LineChart width={800} height={400} data={data}>
-                            <Line
-                                type="monotone"
-                                dataKey="open"
-                                stroke="#8884d8"
-                                dot={false}
-                            />
-                            <Line
-                                type="monotone"
-                                dataKey="high"
-                                stroke="#82ca9d"
-                                dot={false}
-                            />
-                            <Line
-                                type="monotone"
-                                dataKey="low"
-                                stroke="#ffc658"
-                                dot={false}
-                            />
+                        <LineChart width={1400} height={600} data={data}>
                             <Line
                                 type="monotone"
                                 dataKey="close"
-                                stroke="#ff7300"
+                                stroke="#00ff00"
                                 dot={false}
                             />
-                            <CartesianGrid stroke="#ccc" />
+                            {/* <CartesianGrid stroke="#ccc" /> */}
                             <XAxis dataKey="date" />
                             <YAxis />
                             <Tooltip />
@@ -93,10 +87,10 @@ export default function Icici() {
                 </div>
                 <div className="sdnews">
                     <div className="sdnewsimage">
-                        {sharedata[0].gainLoss == 0 ? (
-                            <img src="../../public/up.svg" alt="Image 1" />
+                        {shareInfo.gainLoss === 0 ? (
+                            <img src="../../public/up.svg" alt="Gain" />
                         ) : (
-                            <img src="../../public/down.svg" alt="Image 2" />
+                            <img src="../../public/down.svg" alt="Loss" />
                         )}
                     </div>
                 </div>
