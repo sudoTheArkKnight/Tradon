@@ -14,12 +14,6 @@ const collections = [
     { name: "hal", url: "/hal" },
     { name: "apple", url: "/apple" },
     { name: "amazon", url: "/amazon" },
-    // { name: "mrf", url: "/mrf" },
-    // { name: "itc", url: "/itc" },
-    // { name: "mandm", url: "/mandm" },
-    // { name: "sbi", url: "/sbi" },
-    // { name: "tcs", url: "/tcs" },
-    // { name: "titan", url: "/titan" },
 ];
 
 const SharesScreen = () => {

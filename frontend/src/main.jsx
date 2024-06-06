@@ -23,12 +23,7 @@ import Icici from "./screens/Icici.jsx";
 import Hal from "./screens/Hal.jsx";
 import Amazon from "./screens/Amazon.jsx";
 import Apple from "./screens/Apple.jsx";
-// import Mrf from "./screens/Mrf.jsx";
-// import Itc from "./screens/Itc.jsx";
-// import MandM from "./screens/MandM.jsx";
-// import Sbi from "./screens/Sbi.jsx";
-// import Tcs from "./screens/Tcs.jsx";
-// import Titan from "./screens/Titan.jsx";
+
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<App />}>
@@ -45,12 +40,6 @@ const router = createBrowserRouter(
             <Route path="hal" element={<Hal />} />
             <Route path="apple" element={<Apple />}/>
             <Route path="amazon" element={<Amazon />}/>
-            {/* <Route path="mrf" element={<Mrf />} /> */}
-            {/* <Route path="itc" element={<Itc />} />
-            <Route path="mandm" element={<MandM />} />
-            <Route path="sbi" element={<Sbi />} />
-            <Route path="tcs" element={<Tcs />} />
-            <Route path="titan" element={<Titan />} /> */}
         </Route>
     )
 );
