@@ -87,7 +87,7 @@ export default function Hal() {
                 </div>
                 <div className="sdnews">
                     <div className="sdnewsimage">
-                        {shareInfo.gainLoss === 0 ? (
+                        {shareInfo.gainLoss === 1 ? (
                             <img src="../../public/up.svg" alt="Gain" />
                         ) : (
                             <img src="../../public/down.svg" alt="Loss" />
