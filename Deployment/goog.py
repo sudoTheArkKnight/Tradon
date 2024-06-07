@@ -50,7 +50,7 @@ def get_prediction(ticker):
     from sklearn.ensemble import RandomForestClassifier
     from sklearn.metrics import precision_score
 
-    model = RandomForestClassifier(n_estimators=50, min_samples_split=50, random_state=1)
+    model = RandomForestClassifier(n_estimators=5000, min_samples_split=50, random_state=1)
 
     train = sp500.iloc[:-1]
     test = sp500.iloc[-1:]
@@ -81,13 +81,12 @@ def display():
     today = today.drop(columns=cols)
     today.index = pd.to_datetime(today.index)
 
-    prediction_values = {"Target": prediction}
+    prediction_values = {"Target": int(prediction)}  # Convert prediction to int
 
     df_dict = today.to_dict(orient='records')
     df_dict[0].update(prediction_values)
     df_dict[0].update({"Date": date.strftime("%Y-%m-%d")})
 
-    # Reordering the dictionary
     reordered_dict = {
         'Date': df_dict[0]['Date'],
         'Open': df_dict[0]['Open'],
@@ -95,20 +94,14 @@ def display():
         'Low': df_dict[0]['Low'],
         'Close': df_dict[0]['Close'],
         'Volume': df_dict[0]['Volume'],
-        'Target': df_dict[0]['Target']
+        'Target': int(prediction)  # Convert prediction to int
     }
 
-    print([reordered_dict])
+    client = pymongo.MongoClient("mongodb+srv://ayushkhatri362:ayushkhatri217@mernauth.vwr9uuk.mongodb.net/mernauth?retryWrites=true&w=majority")
+    db = client['mernauth']
+    collection = db['googles']
+    collection.insert_one(reordered_dict)
+    client.close()
 
 
 display()
-
-# client = pymongo.MongoClient("mongodb+srv://tezodipta04:tezodipta04@cluster0.engiim1.mongodb.net/test?retryWrites=true&w=majority")
-# db = client['test']
-# collection = db['googles']
-#
-# # Insert the document into the collection
-# collection.insert_one(df_dict[0])
-#
-# # Close the connection
-# client.close()
