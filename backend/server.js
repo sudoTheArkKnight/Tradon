@@ -11,7 +11,8 @@ import icici from "./models/icici.js";
 import google from "./models/google.js";
 import hdfc from "./models/hdfc.js";
 import hal from "./models/hal.js";
-
+import amazon from "./models/amazon.js";
+import apple from "./models/apple.js";
 import getModelForCollection from "./models/graph.js";
 import news from "./models/news.js";
 connectDB();
